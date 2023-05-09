@@ -1,4 +1,17 @@
 if(array.length == 0) throw new Error("No inputs");//array is var for input of numbers
+
+else{
+    array.sort(function(a,b){return a-b;});
+    var half = Math.floor(array.length / 2);
+    if (array.length % 2 == 0){
+        odd = false
+    }
+    else{
+        odd = true
+    }
+    
+}
+
 function calculateAverage(array) {
     var total = 0;
     var count = 0;
@@ -10,15 +23,42 @@ function calculateAverage(array) {
 
     return total / count;
 }
+
 function calculateMedian(array) {
-  if(array.length ===0) throw new Error("No inputs");
-
-  array.sort(function(a,b){return a-b;});
-
-  var half = Math.floor(array.length / 2);
+    if(array.length ===0) throw new Error("No inputs");
+    
+    var half = Math.floor(array.length / 2);
+    if (odd)
+        return array[half];
   
-  if (array.length % 2 )
-    return array[half];
-  
-  return (array[half - 1] + array[half]) / 2.0;
+    return (array[half - 1] + array[half]) / 2;
+}
+
+function calculateMin(array) {
+    return array[0];
+}
+
+function calculateMax(array) {
+    return array[array.length-1];
+}
+
+function calculateQ1(array) {
+    if (half % 2 == 0){
+         return (array[half/2] + array[(half/2)-1]) / 2;
+    }
+    return array[Math.floor(half / 2)];
+}
+
+function calculateQ3(array) {
+    if (odd){
+        if (half % 2 == 0){//if the quartile is even 
+            return (array[half + half/2] + array[half (half/2)+1]) / 2;
+        }
+        return array[half + Math.floor(half / 2) + 1];
+    }
+    if (half % 2 == 0){
+        return (array[half+(half/2)] + array[half+(half/2)-1]) / 2;
+    }
+    return array[half + Math.floor(half / 2)];
+    
 }
