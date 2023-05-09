@@ -1,0 +1,24 @@
+if(array.length == 0) throw new Error("No inputs");//array is var for input of numbers
+function calculateAverage(array) {
+    var total = 0;
+    var count = 0;
+
+    array.forEach(function(item, index) {
+        total += item;
+        count++;
+    });
+
+    return total / count;
+}
+function calculateMedian(array) {
+  if(array.length ===0) throw new Error("No inputs");
+
+  array.sort(function(a,b){return a-b;});
+
+  var half = Math.floor(array.length / 2);
+  
+  if (array.length % 2 )
+    return array[half];
+  
+  return (array[half - 1] + array[half]) / 2.0;
+}
